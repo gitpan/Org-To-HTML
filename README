@@ -1,0 +1,127 @@
+NAME
+    Org::To::HTML - Export Org document to HTML
+
+VERSION
+    version 0.05
+
+SYNOPSIS
+     use Org::To::HTML qw(org_to_html);
+
+     # non-OO interface
+     my $res = org_to_html(
+         source_file   => 'todo.org', # or source_str
+         #target_file  => 'todo.html', # defaults return the HTML in $res->[2]
+         #html_title   => 'My Todo List', # defaults to file name
+         #include_tags => [...], # default exports all tags.
+         #exclude_tags => [...], # behavior mimics emacs's include/exclude rule
+         #css_url      => '/path/to/my/style.css', # default none
+         #naked        => 0, # if set to 1, no HTML/HEAD/BODY will be output.
+     );
+     die "Failed" unless $res->[0] == 200;
+
+     # OO interface
+     my $oeh = Org::To::HTML->new();
+     my $html = $oeh->export($doc); # $doc is Org::Document object
+
+DESCRIPTION
+    Export Org format to HTML. To customize, you can subclass this module.
+
+    This module uses Log::Any logging framework.
+
+    This module uses Moo for object system.
+
+    This module's functions have Sub::Spec specs.
+
+ATTRIBUTES
+  naked => BOOL
+    If set to true, export_document() will not output HTML/HEAD/BODY
+    wrapping element. Default is false.
+
+  html_title => STR
+    Title to use in TITLE element. If unset, defaults to "(no title)" when
+    exporting.
+
+  css_url => STR
+    If set, export_document() will output a LINK element pointing to this
+    CSS.
+
+METHODS
+  $exp->export_document($doc) => HTML
+    Export document to HTML.
+
+FUNCTIONS
+    None is exported by default, but they can be.
+
+  org_to_html(%args) -> [STATUS_CODE, ERR_MSG, RESULT]
+    Export Org document to HTML.
+
+    This is the non-OO interface. For more customization, consider
+    subclassing Org::To::HTML.
+
+    Returns a 3-element arrayref. STATUS_CODE is 200 on success, or an error
+    code between 3xx-5xx (just like in HTTP). ERR_MSG is a string containing
+    error message, RESULT is the actual result.
+
+    Arguments ("*" denotes required arguments):
+
+    *   css_url => *str*
+
+        Add a link to CSS document.
+
+    *   exclude_tags => *array*
+
+        Exclude trees that carry one of these tags.
+
+        If the whole document doesn't have any of these tags, then the whole
+        document will be exported. Otherwise, trees that do not carry one of
+        these tags will be excluded. If a selected tree is a subtree, the
+        heading hierarchy above it will also be selected for export, but not
+        the text below those headings.
+
+        exclude_tags is evaluated after include_tags.
+
+    *   html_title => *str*
+
+        HTML document title, defaults to source_file.
+
+    *   include_tags => *array*
+
+        Include trees that carry one of these tags.
+
+        Works like Org's 'org-export-select-tags' variable. If the whole
+        document doesn't have any of these tags, then the whole document
+        will be exported. Otherwise, trees that do not carry one of these
+        tags will be excluded. If a selected tree is a subtree, the heading
+        hierarchy above it will also be selected for export, but not the
+        text below those headings.
+
+    *   naked => *bool*
+
+        Don't wrap exported HTML with HTML/HEAD/BODY elements.
+
+    *   source_file => *str*
+
+        Source Org file to export.
+
+    *   source_str => *str*
+
+        Alternatively you can specify Org string directly.
+
+    *   target_file => *str*
+
+        HTML file to write to.
+
+        If not specified, HTML string will be returned.
+
+SEE ALSO
+    Org::Parser
+
+AUTHOR
+    Steven Haryanto <stevenharyanto@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2011 by Steven Haryanto.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+

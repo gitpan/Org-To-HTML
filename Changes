@@ -1,0 +1,48 @@
+Revision history for Org-To-HTML
+
+0.05    2011-08-02
+
+        No functional changes.
+
+        [INCOMPATIBLE CHANGES]
+
+        - Rename dist from Org-Export-HTML to Org-To-HTML; rename function
+          export_org_to_html to org_to_html.
+
+
+0.04    2011-06-16
+
+        No functional changes. Internal changes: split base class
+        (Org::Export::Base) and role (Org::Export::Role) to allow for other
+        exporter classes.
+
+
+0.03    2011-05-25
+
+        [ENHANCEMENTS]
+
+        - Provide OO interface.
+
+
+0.02    2011-05-23
+
+        [ENHANCEMENTS]
+
+        - Parse Org::Element::ShortExample.
+
+        - Add CSS class to blocks.
+
+        - Add options: naked, css_url.
+
+        [BUG FIXES]
+
+        - Encode HTML entities.
+
+        [ETC]
+
+        - Add tests.
+
+
+0.01    2011-03-23
+
+        - First release.
