@@ -1,6 +1,6 @@
 package Org::To::Role;
 BEGIN {
-  $Org::To::Role::VERSION = '0.05';
+  $Org::To::Role::VERSION = '0.06';
 }
 # ABSTRACT: Role for Org exporters
 
@@ -14,7 +14,7 @@ use String::Escape qw/elide printable/;
 
 requires 'export_document';
 requires 'export_block';
-requires 'export_short_example';
+requires 'export_fixed_width_section';
 requires 'export_comment';
 requires 'export_drawer';
 requires 'export_footnote';
@@ -44,7 +44,7 @@ Org::To::Role - Role for Org exporters
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 AUTHOR
 

@@ -3,7 +3,7 @@
 # workaround for dzil
 package org_to_html;
 BEGIN {
-  $org_to_html::VERSION = '0.05';
+  $org_to_html::VERSION = '0.06';
 }
 
 use 5.010;
@@ -22,7 +22,7 @@ org_to_html
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 AUTHOR
 

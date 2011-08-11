@@ -17,7 +17,7 @@ requires:
   File::Slurp: 0
   HTML::Entities: 0
   Moo: 0
-  Org::Parser: 0.11
+  Org::Parser: 0.18
   String::Escape: 0
   Sub::Spec::CmdLine: 0
   Test::Differences: 0
@@ -26,4 +26,4 @@ requires:
 resources:
   homepage: http://search.cpan.org/dist/Org-To-HTML/
   repository: http://github.com/sharyanto/perl-Org-To-HTML
-version: 0.05
+version: 0.06

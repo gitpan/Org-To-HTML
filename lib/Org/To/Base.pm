@@ -1,6 +1,6 @@
 package Org::To::Base;
 BEGIN {
-  $Org::To::Base::VERSION = '0.05';
+  $Org::To::Base::VERSION = '0.06';
 }
 # ABSTRACT: Base class for Org exporters
 
@@ -53,8 +53,8 @@ sub export_elements {
 
         if ($elc eq 'Org::Element::Block') {
             push @$res, $self->export_block($elem);
-        } elsif ($elc eq 'Org::Element::ShortExample') {
-            push @$res, $self->export_short_example($elem);
+        } elsif ($elc eq 'Org::Element::FixedWidthSection') {
+            push @$res, $self->export_fixed_width_section($elem);
         } elsif ($elc eq 'Org::Element::Comment') {
             push @$res, $self->export_comment($elem);
         } elsif ($elc eq 'Org::Element::Drawer') {
@@ -112,7 +112,7 @@ Org::To::Base - Base class for Org exporters
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 

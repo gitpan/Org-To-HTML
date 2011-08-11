@@ -1,6 +1,6 @@
 package Org::To::HTML;
 BEGIN {
-  $Org::To::HTML::VERSION = '0.05';
+  $Org::To::HTML::VERSION = '0.06';
 }
 # ABSTRACT: Export Org document to HTML
 
@@ -171,11 +171,11 @@ sub export_block {
     );
 }
 
-sub export_short_example {
+sub export_fixed_width_section {
     my ($self, $elem) = @_;
     join "", (
-        "<PRE CLASS=\"short_example\">",
-        encode_entities($elem->example),
+        "<PRE CLASS=\"fixed_width_section\">",
+        encode_entities($elem->text),
         "</PRE>\n"
     );
 }
@@ -416,7 +416,7 @@ Org::To::HTML - Export Org document to HTML
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 

@@ -1,6 +1,6 @@
 package Org::To::HTML::Link::cpanmod;
 BEGIN {
-  $Org::To::HTML::Link::cpanmod::VERSION = '0.05';
+  $Org::To::HTML::Link::cpanmod::VERSION = '0.06';
 }
 1;
 
@@ -13,7 +13,7 @@ Org::To::HTML::Link::cpanmod
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 AUTHOR
 
