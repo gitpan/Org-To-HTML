@@ -1,6 +1,6 @@
 package Org::To::Role;
-BEGIN {
-  $Org::To::Role::VERSION = '0.06';
+{
+  $Org::To::Role::VERSION = '0.07';
 }
 # ABSTRACT: Role for Org exporters
 
@@ -44,7 +44,9 @@ Org::To::Role - Role for Org exporters
 
 =head1 VERSION
 
-version 0.06
+version 0.07
+
+=head1 FUNCTIONS
 
 =head1 AUTHOR
 
@@ -52,7 +54,7 @@ Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Steven Haryanto.
+This software is copyright (c) 2012 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

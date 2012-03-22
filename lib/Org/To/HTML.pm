@@ -1,6 +1,6 @@
 package Org::To::HTML;
-BEGIN {
-  $Org::To::HTML::VERSION = '0.06';
+{
+  $Org::To::HTML::VERSION = '0.07';
 }
 # ABSTRACT: Export Org document to HTML
 
@@ -416,7 +416,7 @@ Org::To::HTML - Export Org document to HTML
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -476,19 +476,21 @@ Export document to HTML.
 
 None is exported by default, but they can be.
 
-=head2 org_to_html(%args) -> [STATUS_CODE, ERR_MSG, RESULT]
+=head1 SEE ALSO
 
+L<Org::Parser>
+
+=head1 FUNCTIONS
+
+
+=head2 org_to_html(%args) -> [status, msg, result, meta]
 
 Export Org document to HTML.
 
 This is the non-OO interface. For more customization, consider subclassing
 Org::To::HTML.
 
-Returns a 3-element arrayref. STATUS_CODE is 200 on success, or an error code
-between 3xx-5xx (just like in HTTP). ERR_MSG is a string containing error
-message, RESULT is the actual result.
-
-Arguments (C<*> denotes required arguments):
+Arguments ('*' denotes required arguments):
 
 =over 4
 
@@ -505,7 +507,7 @@ will be exported. Otherwise, trees that do not carry one of these tags will be
 excluded. If a selected tree is a subtree, the heading hierarchy above it will
 also be selected for export, but not the text below those headings.
 
-exclude_tags is evaluated after include_tags.
+excludeB<tags is evaluated after include>tags.
 
 =item * B<html_title> => I<str>
 
@@ -541,9 +543,9 @@ If not specified, HTML string will be returned.
 
 =back
 
-=head1 SEE ALSO
+Return value:
 
-L<Org::Parser>
+Returns an enveloped result (an array). First element (status) is an integer containing HTTP status code (200 means OK, 4xx caller error, 5xx function error). Second element (msg) is a string containing error message, or 'OK' if status is 200. Third element (result) is optional, the actual result. Fourth element (meta) is called result metadata and is optional, a hash that contains extra information.
 
 =head1 AUTHOR
 
@@ -551,7 +553,7 @@ Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Steven Haryanto.
+This software is copyright (c) 2012 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
