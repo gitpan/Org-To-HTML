@@ -1,23 +1,16 @@
 package Org::To::Base;
-{
-  $Org::To::Base::VERSION = '0.07';
-}
-# ABSTRACT: Base class for Org exporters
 
-use 5.010;
+use 5.010001;
 use Log::Any '$log';
 
 use List::Util qw(first);
 use Moo;
+use experimental 'smartmatch';
 
+our $VERSION = '0.08'; # VERSION
 
 has include_tags => (is => 'rw');
-
-
 has exclude_tags => (is => 'rw');
-
-
-
 
 sub export {
     my ($self, $doc) = @_;
@@ -37,7 +30,6 @@ sub export {
 
     $self->export_elements($doc);
 }
-
 
 sub export_elements {
     my ($self, @elems) = @_;
@@ -102,9 +94,13 @@ sub export_elements {
 }
 
 1;
+# ABSTRACT: Base class for Org exporters
 
+__END__
 
 =pod
+
+=encoding utf-8
 
 =head1 NAME
 
@@ -112,7 +108,7 @@ Org::To::Base - Base class for Org exporters
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 
@@ -125,6 +121,8 @@ from this class (as well as add L<Org::To::Role> role) and provide an
 implementation for the export_*() methods. Add extra attributes for export
 options as necessary (for example, Org::To::HTML adds C<html_title>, C<css_url>,
 and so on).
+
+=for Pod::Coverage BUILD
 
 =head1 ATTRIBUTES
 
@@ -147,8 +145,6 @@ exclude_tags is evaluated after include_tags.
 
 =head1 METHODS
 
-=for Pod::Coverage BUILD
-
 =head2 $exp->export($doc) => STR
 
 Export Org.
@@ -159,21 +155,20 @@ Export Org element objects and with the children, recursively. Will call various
 export_*() methods according to element class. Should return a string which is
 the exported document.
 
-=head1 FUNCTIONS
-
 =head1 AUTHOR
 
 Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Steven Haryanto.
+This software is copyright (c) 2013 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
+=head1 FUNCTIONS
+
+
+None are exported by default, but they are exportable.
+
 =cut
-
-
-__END__
-

@@ -3,27 +3,30 @@ abstract: 'Export Org document to HTML'
 author:
   - 'Steven Haryanto <stevenharyanto@gmail.com>'
 build_requires:
-  Module::Build: 0.3601
+  File::Slurp: 0
+  Test::Differences: 0
+  Test::More: 0.96
 configure_requires:
-  Module::Build: 0.3601
+  ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640'
+generated_by: 'Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.131560'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Org-To-HTML
 requires:
-  File::Slurp: 0
   HTML::Entities: 0
+  Log::Any: 0
   Moo: 0
+  Moo::Role: 0
+  Org::Document: 0.18
   Org::Parser: 0.18
   Perinci::CmdLine: 0
   String::Escape: 0
-  Test::Differences: 0
-  Test::More: 0.96
-  perl: 5.010000
+  experimental: 0
+  perl: 5.010001
 resources:
   homepage: http://search.cpan.org/dist/Org-To-HTML/
   repository: http://github.com/sharyanto/perl-Org-To-HTML
-version: 0.07
+version: 0.08

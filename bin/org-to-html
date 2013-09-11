@@ -1,28 +1,31 @@
 #!/usr/bin/perl
 
-# workaround for dzil
-package org_to_html;
-{
-  $org_to_html::VERSION = '0.07';
-}
-
 use 5.010;
 use strict;
 use warnings;
 
+our $VERSION = '0.08'; # VERSION
+
 use Perinci::CmdLine;
 Perinci::CmdLine->new(url=>'/Org/To/HTML/org_to_html')->run;
 
+1;
+# ABSTRACT: Convert Org to HTML document
+# PODNAME: org-to-html
+
 __END__
+
 =pod
+
+=encoding utf-8
 
 =head1 NAME
 
-org_to_html
+org-to-html - Convert Org to HTML document
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 AUTHOR
 
@@ -30,10 +33,9 @@ Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Steven Haryanto.
+This software is copyright (c) 2013 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

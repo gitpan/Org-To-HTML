@@ -1,8 +1,4 @@
 package Org::To::HTML;
-{
-  $Org::To::HTML::VERSION = '0.07';
-}
-# ABSTRACT: Export Org document to HTML
 
 use 5.010;
 use Log::Any '$log';
@@ -14,24 +10,20 @@ use HTML::Entities qw/encode_entities/;
 use Org::Document;
 
 use Moo;
+use experimental 'smartmatch';
 with 'Org::To::Role';
 extends 'Org::To::Base';
+
+our $VERSION = '0.08'; # VERSION
 
 require Exporter;
 our @ISA;
 push @ISA,       qw(Exporter);
 our @EXPORT_OK = qw(org_to_html);
 
-
-
 has naked => (is => 'rw');
-
-
 has html_title => (is => 'rw');
-
-
 has css_url => (is => 'rw');
-
 
 our %SPEC;
 $SPEC{org_to_html} = {
@@ -125,8 +117,6 @@ sub org_to_html {
         return [200, "OK", $html];
     }
 }
-
-
 
 sub export_document {
     my ($self, $doc) = @_;
@@ -406,9 +396,13 @@ sub export_link {
 }
 
 1;
+# ABSTRACT: Export Org document to HTML
 
+__END__
 
 =pod
+
+=encoding utf-8
 
 =head1 NAME
 
@@ -416,7 +410,7 @@ Org::To::HTML - Export Org document to HTML
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 
@@ -446,7 +440,9 @@ This module uses L<Log::Any> logging framework.
 
 This module uses L<Moo> for object system.
 
-This module's functions have L<Sub::Spec> specs.
+This module has L<Rinci> metadata.
+
+=for Pod::Coverage ^(export_.+)$
 
 =head1 ATTRIBUTES
 
@@ -466,26 +462,35 @@ If set, export_document() will output a LINK element pointing to this CSS.
 
 =head1 METHODS
 
-=for Pod::Coverage BUILD export_.+
+=head1 new(%args)
 
 =head2 $exp->export_document($doc) => HTML
 
 Export document to HTML.
 
-=head1 FUNCTIONS
-
-None is exported by default, but they can be.
-
 =head1 SEE ALSO
+
+For more information about Org document format, visit http://orgmode.org/
 
 L<Org::Parser>
 
+=head1 AUTHOR
+
+Steven Haryanto <stevenharyanto@gmail.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2013 by Steven Haryanto.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =head1 FUNCTIONS
 
 
-=head2 org_to_html(%args) -> [status, msg, result, meta]
+None are exported by default, but they are exportable.
 
-Export Org document to HTML.
+=head2 org_to_html(%args) -> [status, msg, result, meta]
 
 This is the non-OO interface. For more customization, consider subclassing
 Org::To::HTML.
@@ -507,7 +512,7 @@ will be exported. Otherwise, trees that do not carry one of these tags will be
 excluded. If a selected tree is a subtree, the heading hierarchy above it will
 also be selected for export, but not the text below those headings.
 
-excludeB<tags is evaluated after include>tags.
+excludeI<tags is evaluated after include>tags.
 
 =item * B<html_title> => I<str>
 
@@ -547,19 +552,4 @@ Return value:
 
 Returns an enveloped result (an array). First element (status) is an integer containing HTTP status code (200 means OK, 4xx caller error, 5xx function error). Second element (msg) is a string containing error message, or 'OK' if status is 200. Third element (result) is optional, the actual result. Fourth element (meta) is called result metadata and is optional, a hash that contains extra information.
 
-=head1 AUTHOR
-
-Steven Haryanto <stevenharyanto@gmail.com>
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2012 by Steven Haryanto.
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
-
 =cut
-
-
-__END__
-

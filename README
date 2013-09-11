@@ -2,7 +2,7 @@ NAME
     Org::To::HTML - Export Org document to HTML
 
 VERSION
-    version 0.07
+    version 0.08
 
 SYNOPSIS
      use Org::To::HTML qw(org_to_html);
@@ -30,7 +30,7 @@ DESCRIPTION
 
     This module uses Moo for object system.
 
-    This module's functions have Sub::Spec specs.
+    This module has Rinci metadata.
 
 ATTRIBUTES
   naked => BOOL
@@ -46,19 +46,29 @@ ATTRIBUTES
     CSS.
 
 METHODS
+new(%args)
   $exp->export_document($doc) => HTML
     Export document to HTML.
 
-FUNCTIONS
-    None is exported by default, but they can be.
-
 SEE ALSO
+    For more information about Org document format, visit
+    http://orgmode.org/
+
     Org::Parser
 
-FUNCTIONS
-  org_to_html(%args) -> [status, msg, result, meta]
-    Export Org document to HTML.
+AUTHOR
+    Steven Haryanto <stevenharyanto@gmail.com>
 
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2013 by Steven Haryanto.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
+FUNCTIONS
+    None are exported by default, but they are exportable.
+
+  org_to_html(%args) -> [status, msg, result, meta]
     This is the non-OO interface. For more customization, consider
     subclassing Org::To::HTML.
 
@@ -78,7 +88,7 @@ FUNCTIONS
         heading hierarchy above it will also be selected for export, but not
         the text below those headings.
 
-        excludetags is evaluated after includetags.
+        exclude*tags is evaluated after include*tags.
 
     *   html_title => *str*
 
@@ -121,13 +131,4 @@ FUNCTIONS
     message, or 'OK' if status is 200. Third element (result) is optional,
     the actual result. Fourth element (meta) is called result metadata and
     is optional, a hash that contains extra information.
-
-AUTHOR
-    Steven Haryanto <stevenharyanto@gmail.com>
-
-COPYRIGHT AND LICENSE
-    This software is copyright (c) 2012 by Steven Haryanto.
-
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
 
