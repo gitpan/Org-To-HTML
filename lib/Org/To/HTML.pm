@@ -14,7 +14,7 @@ use experimental 'smartmatch';
 with 'Org::To::Role';
 extends 'Org::To::Base';
 
-our $VERSION = '0.09'; # VERSION
+our $VERSION = '0.10'; # VERSION
 
 require Exporter;
 our @ISA;
@@ -189,40 +189,6 @@ sub export_footnote {
     my ($self, $elem) = @_;
     # currently not exported
     '';
-}
-
-sub _included_children {
-    my ($self, $elem) = @_;
-
-    my @htags = $elem->get_tags;
-    my @children = @{$elem->children // []};
-    if ($self->include_tags) {
-        if (!defined(first {$_ ~~ @htags} @{$self->include_tags})) {
-            # headline doesn't contain include_tags, select only
-            # suheadlines that contain them
-            @children = ();
-            for my $c (@{ $elem->children // []}) {
-                next unless $c->isa('Org::Element::Headline');
-                my @hl_included = $elem->find(
-                    sub {
-                        my $el = shift;
-                        return unless
-                            $elem->isa('Org::Element::Headline');
-                        my @t = $elem->get_tags;
-                        return defined(first {$_ ~~ @t}
-                                           @{$self->include_tags});
-                    });
-                next unless @hl_included;
-                push @children, $c;
-            }
-            return () unless @children;
-        }
-    }
-    if ($self->exclude_tags) {
-        return () if defined(first {$_ ~~ @htags}
-                                 @{$self->exclude_tags});
-    }
-    @children;
 }
 
 sub export_headline {
@@ -417,7 +383,7 @@ Org::To::HTML - Export Org document to HTML
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 

@@ -2,7 +2,7 @@ NAME
     Org::To::HTML - Export Org document to HTML
 
 VERSION
-    version 0.09
+    version 0.10
 
 SYNOPSIS
      use Org::To::HTML qw(org_to_html);
