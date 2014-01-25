@@ -14,7 +14,7 @@ use experimental 'smartmatch';
 with 'Org::To::Role';
 extends 'Org::To::Base';
 
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 require Exporter;
 our @ISA;
@@ -191,7 +191,7 @@ sub export_footnote {
     '';
 }
 
-sub export_headline {
+sub _included_children {
     my ($self, $elem) = @_;
 
     my @htags = $elem->get_tags;
@@ -215,13 +215,20 @@ sub export_headline {
                 next unless @hl_included;
                 push @children, $c;
             }
-            return '' unless @children;
+            return () unless @children;
         }
     }
     if ($self->exclude_tags) {
-        return '' if defined(first {$_ ~~ @htags}
+        return () if defined(first {$_ ~~ @htags}
                                  @{$self->exclude_tags});
     }
+    @children;
+}
+
+sub export_headline {
+    my ($self, $elem) = @_;
+
+    my @children = $self->_included_children($elem);
 
     join "", (
         "<H" , $elem->level, ">",
@@ -402,7 +409,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -410,7 +417,7 @@ Org::To::HTML - Export Org document to HTML
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 
@@ -442,55 +449,12 @@ This module uses L<Moo> for object system.
 
 This module has L<Rinci> metadata.
 
-=for Pod::Coverage ^(export_.+)$
-
-=head1 ATTRIBUTES
-
-=head2 naked => BOOL
-
-If set to true, export_document() will not output HTML/HEAD/BODY wrapping
-element. Default is false.
-
-=head2 html_title => STR
-
-Title to use in TITLE element. If unset, defaults to "(no title)" when
-exporting.
-
-=head2 css_url => STR
-
-If set, export_document() will output a LINK element pointing to this CSS.
-
-=head1 METHODS
-
-=head1 new(%args)
-
-=head2 $exp->export_document($doc) => HTML
-
-Export document to HTML.
-
-=head1 SEE ALSO
-
-For more information about Org document format, visit http://orgmode.org/
-
-L<Org::Parser>
-
-=head1 AUTHOR
-
-Steven Haryanto <stevenharyanto@gmail.com>
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2013 by Steven Haryanto.
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
-
 =head1 FUNCTIONS
 
 
-None are exported by default, but they are exportable.
-
 =head2 org_to_html(%args) -> [status, msg, result, meta]
+
+Export Org document to HTML.
 
 This is the non-OO interface. For more customization, consider subclassing
 Org::To::HTML.
@@ -551,5 +515,64 @@ If not specified, HTML string will be returned.
 Return value:
 
 Returns an enveloped result (an array). First element (status) is an integer containing HTTP status code (200 means OK, 4xx caller error, 5xx function error). Second element (msg) is a string containing error message, or 'OK' if status is 200. Third element (result) is optional, the actual result. Fourth element (meta) is called result metadata and is optional, a hash that contains extra information.
+
+=for Pod::Coverage ^(export_.+)$
+
+=head1 ATTRIBUTES
+
+=head2 naked => BOOL
+
+If set to true, export_document() will not output HTML/HEAD/BODY wrapping
+element. Default is false.
+
+=head2 html_title => STR
+
+Title to use in TITLE element. If unset, defaults to "(no title)" when
+exporting.
+
+=head2 css_url => STR
+
+If set, export_document() will output a LINK element pointing to this CSS.
+
+=head1 METHODS
+
+=head1 new(%args)
+
+=head2 $exp->export_document($doc) => HTML
+
+Export document to HTML.
+
+=head1 SEE ALSO
+
+For more information about Org document format, visit http://orgmode.org/
+
+L<Org::Parser>
+
+=head1 HOMEPAGE
+
+Please visit the project's homepage at L<https://metacpan.org/release/Org-To-HTML>.
+
+=head1 SOURCE
+
+Source repository is at L<https://github.com/sharyanto/perl-Org-To-HTML>.
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website L<https://rt.cpan.org/Public/Dist/Display.html?Name=Org-To-HTML>
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
+=head1 AUTHOR
+
+Steven Haryanto <stevenharyanto@gmail.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2014 by Steven Haryanto.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut

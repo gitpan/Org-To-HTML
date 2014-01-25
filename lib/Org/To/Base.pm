@@ -7,7 +7,7 @@ use List::Util qw(first);
 use Moo;
 use experimental 'smartmatch';
 
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 has include_tags => (is => 'rw');
 has exclude_tags => (is => 'rw');
@@ -37,9 +37,11 @@ sub export_elements {
     my $res = [];
   ELEM:
     for my $elem (@elems) {
+        require String::Escape;
         if ($log->is_trace) {
             $log->tracef("exporting element %s (%s) ...", ref($elem),
-                         elide(printable($elem->as_string), 30));
+                         String::Escape::elide(
+                             String::Escape::printable($elem->as_string), 30));
         }
         my $elc = ref($elem);
 
@@ -100,7 +102,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -108,7 +110,7 @@ Org::To::Base - Base class for Org exporters
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 
@@ -155,20 +157,31 @@ Export Org element objects and with the children, recursively. Will call various
 export_*() methods according to element class. Should return a string which is
 the exported document.
 
+=head1 HOMEPAGE
+
+Please visit the project's homepage at L<https://metacpan.org/release/Org-To-HTML>.
+
+=head1 SOURCE
+
+Source repository is at L<https://github.com/sharyanto/perl-Org-To-HTML>.
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website L<https://rt.cpan.org/Public/Dist/Display.html?Name=Org-To-HTML>
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
 =head1 AUTHOR
 
 Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Steven Haryanto.
+This software is copyright (c) 2014 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
-
-=head1 FUNCTIONS
-
-
-None are exported by default, but they are exportable.
 
 =cut

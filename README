@@ -2,7 +2,7 @@ NAME
     Org::To::HTML - Export Org document to HTML
 
 VERSION
-    version 0.08
+    version 0.09
 
 SYNOPSIS
      use Org::To::HTML qw(org_to_html);
@@ -32,43 +32,10 @@ DESCRIPTION
 
     This module has Rinci metadata.
 
-ATTRIBUTES
-  naked => BOOL
-    If set to true, export_document() will not output HTML/HEAD/BODY
-    wrapping element. Default is false.
-
-  html_title => STR
-    Title to use in TITLE element. If unset, defaults to "(no title)" when
-    exporting.
-
-  css_url => STR
-    If set, export_document() will output a LINK element pointing to this
-    CSS.
-
-METHODS
-new(%args)
-  $exp->export_document($doc) => HTML
-    Export document to HTML.
-
-SEE ALSO
-    For more information about Org document format, visit
-    http://orgmode.org/
-
-    Org::Parser
-
-AUTHOR
-    Steven Haryanto <stevenharyanto@gmail.com>
-
-COPYRIGHT AND LICENSE
-    This software is copyright (c) 2013 by Steven Haryanto.
-
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
-
 FUNCTIONS
-    None are exported by default, but they are exportable.
-
   org_to_html(%args) -> [status, msg, result, meta]
+    Export Org document to HTML.
+
     This is the non-OO interface. For more customization, consider
     subclassing Org::To::HTML.
 
@@ -131,4 +98,51 @@ FUNCTIONS
     message, or 'OK' if status is 200. Third element (result) is optional,
     the actual result. Fourth element (meta) is called result metadata and
     is optional, a hash that contains extra information.
+
+ATTRIBUTES
+  naked => BOOL
+    If set to true, export_document() will not output HTML/HEAD/BODY
+    wrapping element. Default is false.
+
+  html_title => STR
+    Title to use in TITLE element. If unset, defaults to "(no title)" when
+    exporting.
+
+  css_url => STR
+    If set, export_document() will output a LINK element pointing to this
+    CSS.
+
+METHODS
+new(%args)
+  $exp->export_document($doc) => HTML
+    Export document to HTML.
+
+SEE ALSO
+    For more information about Org document format, visit
+    http://orgmode.org/
+
+    Org::Parser
+
+HOMEPAGE
+    Please visit the project's homepage at
+    <https://metacpan.org/release/Org-To-HTML>.
+
+SOURCE
+    Source repository is at <https://github.com/sharyanto/perl-Org-To-HTML>.
+
+BUGS
+    Please report any bugs or feature requests on the bugtracker website
+    <https://rt.cpan.org/Public/Dist/Display.html?Name=Org-To-HTML>
+
+    When submitting a bug or request, please include a test-file or a patch
+    to an existing test-file that illustrates the bug or desired feature.
+
+AUTHOR
+    Steven Haryanto <stevenharyanto@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2014 by Steven Haryanto.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
 
