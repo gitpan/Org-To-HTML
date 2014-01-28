@@ -7,7 +7,7 @@ use List::Util qw(first);
 use Moo;
 use experimental 'smartmatch';
 
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 has include_tags => (is => 'rw');
 has exclude_tags => (is => 'rw');
@@ -144,7 +144,7 @@ Org::To::Base - Base class for Org exporters
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

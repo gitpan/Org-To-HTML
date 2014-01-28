@@ -14,7 +14,7 @@ use experimental 'smartmatch';
 with 'Org::To::Role';
 extends 'Org::To::Base';
 
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 require Exporter;
 our @ISA;
@@ -325,7 +325,8 @@ sub export_text {
 
     push @$html, "<$tag>" if $tag;
     my $text = encode_entities($elem->text);
-    $text =~ s/\R\R/\n\n<p>\n\n/g;
+    $text =~ s/\R\R/\n\n<p>/g;
+    $text =~ s/(?<=.)\R/ /g;
     push @$html, $text;
     push @$html, $self->export_elements(@{$elem->children}) if $elem->children;
     push @$html, "</$tag>" if $tag;
@@ -383,7 +384,7 @@ Org::To::HTML - Export Org document to HTML
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

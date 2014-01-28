@@ -1,6 +1,6 @@
 package Org::To::HTML::Link::cpandist;
 
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 1;
 # ABSTRACT: cpandist
@@ -17,7 +17,7 @@ Org::To::HTML::Link::cpandist - cpandist
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 HOMEPAGE
 

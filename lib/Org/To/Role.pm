@@ -8,7 +8,7 @@ use Log::Any '$log';
 use Moo::Role;
 use String::Escape qw/elide printable/;
 
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 requires 'export_document';
 requires 'export_block';
@@ -46,7 +46,7 @@ Org::To::Role - Role for Org exporters
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 HOMEPAGE
 
