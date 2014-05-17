@@ -4,7 +4,7 @@ use 5.010;
 use strict;
 use warnings;
 
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 use Perinci::CmdLine;
 Perinci::CmdLine->new(url=>'/Org/To/HTML/org_to_html')->run;
@@ -25,7 +25,7 @@ org-to-html - Convert Org to HTML document
 
 =head1 VERSION
 
-version 0.11
+This document describes version 0.12 of org-to-html (from Perl distribution Org-To-HTML), released on 2014-05-17.
 
 =head1 HOMEPAGE
 

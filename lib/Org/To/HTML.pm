@@ -5,7 +5,7 @@ use Log::Any '$log';
 
 use vars qw($VERSION);
 
-use File::Slurp;
+use File::Slurp::Tiny qw(read_file);
 use HTML::Entities qw/encode_entities/;
 use Org::Document;
 
@@ -14,7 +14,7 @@ use experimental 'smartmatch';
 with 'Org::To::Role';
 extends 'Org::To::Base';
 
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 require Exporter;
 our @ISA;
@@ -27,6 +27,7 @@ has css_url => (is => 'rw');
 
 our %SPEC;
 $SPEC{org_to_html} = {
+    v => 1.1,
     summary => 'Export Org document to HTML',
     description => <<'_',
 
@@ -35,23 +36,26 @@ Org::To::HTML.
 
 _
     args => {
-        source_file => ['str' => {
+        source_file => {
             summary => 'Source Org file to export',
-        }],
-        source_str => ['str' => {
+            schema => ['str' => {}],
+        },
+        source_str => {
             summary => 'Alternatively you can specify Org string directly',
-        }],
-        target_file => ['str' => {
+            schema => ['str' => {}],
+        },
+        target_file => {
             summary => 'HTML file to write to',
+            schema => ['str' => {}],
             description => <<'_',
 
 If not specified, HTML string will be returned.
 
 _
-        }],
-        include_tags => ['array' => {
-            of => 'str*',
+        },
+        include_tags => {
             summary => 'Include trees that carry one of these tags',
+            schema => ['array' => {of => 'str*'}],
             description => <<'_',
 
 Works like Org's 'org-export-select-tags' variable. If the whole document
@@ -61,10 +65,10 @@ selected tree is a subtree, the heading hierarchy above it will also be selected
 for export, but not the text below those headings.
 
 _
-        }],
-        exclude_tags => ['array' => {
-            of => 'str*',
+        },
+        exclude_tags => {
             summary => 'Exclude trees that carry one of these tags',
+            schema => ['array' => {of => 'str*'}],
             description => <<'_',
 
 If the whole document doesn't have any of these tags, then the whole document
@@ -75,17 +79,20 @@ also be selected for export, but not the text below those headings.
 exclude_tags is evaluated after include_tags.
 
 _
-        }],
-        html_title => ['str' => {
+        },
+        html_title => {
             summary => 'HTML document title, defaults to source_file',
-        }],
-        css_url => ['str' => {
+            schema => ['str' => {}],
+        },
+        css_url => {
             summary => 'Add a link to CSS document',
-        }],
-        naked => ['bool' => {
+            schema => ['str' => {}],
+        },
+        naked => {
             summary => 'Don\'t wrap exported HTML with HTML/HEAD/BODY elements',
-        }],
-    }
+            schema => ['bool' => {}],
+        },
+    },
 };
 sub org_to_html {
     my %args = @_;
@@ -384,7 +391,7 @@ Org::To::HTML - Export Org document to HTML
 
 =head1 VERSION
 
-version 0.11
+This document describes version 0.12 of Org::To::HTML (from Perl distribution Org-To-HTML), released on 2014-05-17.
 
 =head1 SYNOPSIS
 
@@ -409,6 +416,8 @@ version 0.11
 =head1 DESCRIPTION
 
 Export Org format to HTML. To customize, you can subclass this module.
+
+A command-line utility is included: L<org-to-html>.
 
 This module uses L<Log::Any> logging framework.
 
@@ -481,7 +490,14 @@ If not specified, HTML string will be returned.
 
 Return value:
 
-Returns an enveloped result (an array). First element (status) is an integer containing HTTP status code (200 means OK, 4xx caller error, 5xx function error). Second element (msg) is a string containing error message, or 'OK' if status is 200. Third element (result) is optional, the actual result. Fourth element (meta) is called result metadata and is optional, a hash that contains extra information.
+Returns an enveloped result (an array).
+
+First element (status) is an integer containing HTTP status code
+(200 means OK, 4xx caller error, 5xx function error). Second element
+(msg) is a string containing error message, or 'OK' if status is
+200. Third element (result) is optional, the actual result. Fourth
+element (meta) is called result metadata and is optional, a hash
+that contains extra information.
 
 =for Pod::Coverage ^(export_.+)$
 
@@ -514,6 +530,8 @@ Export document to HTML.
 For more information about Org document format, visit http://orgmode.org/
 
 L<Org::Parser>
+
+L<org-to-html>
 
 =head1 HOMEPAGE
 

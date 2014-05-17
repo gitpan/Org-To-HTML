@@ -2,7 +2,8 @@ NAME
     Org::To::HTML - Export Org document to HTML
 
 VERSION
-    version 0.11
+    This document describes version 0.12 of Org::To::HTML (from Perl
+    distribution Org-To-HTML), released on 2014-05-17.
 
 SYNOPSIS
      use Org::To::HTML qw(org_to_html);
@@ -25,6 +26,8 @@ SYNOPSIS
 
 DESCRIPTION
     Export Org format to HTML. To customize, you can subclass this module.
+
+    A command-line utility is included: org-to-html.
 
     This module uses Log::Any logging framework.
 
@@ -92,12 +95,14 @@ FUNCTIONS
 
     Return value:
 
-    Returns an enveloped result (an array). First element (status) is an
-    integer containing HTTP status code (200 means OK, 4xx caller error, 5xx
-    function error). Second element (msg) is a string containing error
-    message, or 'OK' if status is 200. Third element (result) is optional,
-    the actual result. Fourth element (meta) is called result metadata and
-    is optional, a hash that contains extra information.
+    Returns an enveloped result (an array).
+
+    First element (status) is an integer containing HTTP status code (200
+    means OK, 4xx caller error, 5xx function error). Second element (msg) is
+    a string containing error message, or 'OK' if status is 200. Third
+    element (result) is optional, the actual result. Fourth element (meta)
+    is called result metadata and is optional, a hash that contains extra
+    information.
 
 ATTRIBUTES
   naked => BOOL
@@ -122,6 +127,8 @@ SEE ALSO
     http://orgmode.org/
 
     Org::Parser
+
+    org-to-html
 
 HOMEPAGE
     Please visit the project's homepage at
