@@ -29,7 +29,8 @@ my %WriteMakefileArgs = (
     "Moo::Role" => 0,
     "Org::Document" => "0.18",
     "Org::Parser" => "0.18",
-    "Perinci::CmdLine" => 0,
+    "Perinci::CmdLine::Any" => 0,
+    "Rinci" => "v1.1.0",
     "String::Escape" => 0,
     "experimental" => 0
   },
@@ -41,7 +42,7 @@ my %WriteMakefileArgs = (
     "Test::Differences" => 0,
     "Test::More" => "0.96"
   },
-  "VERSION" => "0.12",
+  "VERSION" => "0.13",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -59,7 +60,8 @@ my %FallbackPrereqs = (
   "Moo::Role" => 0,
   "Org::Document" => "0.18",
   "Org::Parser" => "0.18",
-  "Perinci::CmdLine" => 0,
+  "Perinci::CmdLine::Any" => 0,
+  "Rinci" => "v1.1.0",
   "String::Escape" => 0,
   "Test::Differences" => 0,
   "Test::More" => "0.96",

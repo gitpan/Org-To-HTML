@@ -35,7 +35,8 @@
             "Moo::Role" : "0",
             "Org::Document" : "0.18",
             "Org::Parser" : "0.18",
-            "Perinci::CmdLine" : "0",
+            "Perinci::CmdLine::Any" : "0",
+            "Rinci" : "v1.1.0",
             "String::Escape" : "0",
             "experimental" : "0",
             "perl" : "5.010001"
@@ -64,7 +65,7 @@
          "web" : "https://github.com/sharyanto/perl-Org-To-HTML"
       }
    },
-   "version" : "0.12",
+   "version" : "0.13",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.018001"

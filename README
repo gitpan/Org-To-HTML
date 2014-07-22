@@ -2,8 +2,8 @@ NAME
     Org::To::HTML - Export Org document to HTML
 
 VERSION
-    This document describes version 0.12 of Org::To::HTML (from Perl
-    distribution Org-To-HTML), released on 2014-05-17.
+    This document describes version 0.13 of Org::To::HTML (from Perl
+    distribution Org-To-HTML), released on 2014-07-22.
 
 SYNOPSIS
      use Org::To::HTML qw(org_to_html);
@@ -58,7 +58,7 @@ FUNCTIONS
         heading hierarchy above it will also be selected for export, but not
         the text below those headings.
 
-        exclude*tags is evaluated after include*tags.
+        exclude_tags is evaluated after include_tags.
 
     *   html_title => *str*
 
@@ -103,6 +103,8 @@ FUNCTIONS
     element (result) is optional, the actual result. Fourth element (meta)
     is called result metadata and is optional, a hash that contains extra
     information.
+
+     (any)
 
 ATTRIBUTES
   naked => BOOL

@@ -1,6 +1,6 @@
 package Org::To::HTML::Link::cpandist;
 
-our $VERSION = '0.12'; # VERSION
+our $VERSION = '0.13'; # VERSION
 
 1;
 # ABSTRACT: cpandist
@@ -17,7 +17,7 @@ Org::To::HTML::Link::cpandist - cpandist
 
 =head1 VERSION
 
-This document describes version 0.12 of Org::To::HTML::Link::cpandist (from Perl distribution Org-To-HTML), released on 2014-05-17.
+This document describes version 0.13 of Org::To::HTML::Link::cpandist (from Perl distribution Org-To-HTML), released on 2014-07-22.
 
 =head1 HOMEPAGE
 

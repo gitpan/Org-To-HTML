@@ -14,7 +14,7 @@ use experimental 'smartmatch';
 with 'Org::To::Role';
 extends 'Org::To::Base';
 
-our $VERSION = '0.12'; # VERSION
+our $VERSION = '0.13'; # VERSION
 
 require Exporter;
 our @ISA;
@@ -391,7 +391,7 @@ Org::To::HTML - Export Org document to HTML
 
 =head1 VERSION
 
-This document describes version 0.12 of Org::To::HTML (from Perl distribution Org-To-HTML), released on 2014-05-17.
+This document describes version 0.13 of Org::To::HTML (from Perl distribution Org-To-HTML), released on 2014-07-22.
 
 =head1 SYNOPSIS
 
@@ -452,7 +452,7 @@ will be exported. Otherwise, trees that do not carry one of these tags will be
 excluded. If a selected tree is a subtree, the heading hierarchy above it will
 also be selected for export, but not the text below those headings.
 
-excludeI<tags is evaluated after include>tags.
+exclude_tags is evaluated after include_tags.
 
 =item * B<html_title> => I<str>
 
@@ -498,6 +498,8 @@ First element (status) is an integer containing HTTP status code
 200. Third element (result) is optional, the actual result. Fourth
 element (meta) is called result metadata and is optional, a hash
 that contains extra information.
+
+ (any)
 
 =for Pod::Coverage ^(export_.+)$
 
