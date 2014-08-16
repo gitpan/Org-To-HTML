@@ -7,7 +7,7 @@ use List::Util qw(first);
 use Moo;
 use experimental 'smartmatch';
 
-our $VERSION = '0.13'; # VERSION
+our $VERSION = '0.14'; # VERSION
 
 has include_tags => (is => 'rw');
 has exclude_tags => (is => 'rw');
@@ -144,7 +144,7 @@ Org::To::Base - Base class for Org exporters
 
 =head1 VERSION
 
-This document describes version 0.13 of Org::To::Base (from Perl distribution Org-To-HTML), released on 2014-07-22.
+This document describes version 0.14 of Org::To::Base (from Perl distribution Org-To-HTML), released on 2014-08-16.
 
 =head1 SYNOPSIS
 

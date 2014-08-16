@@ -14,7 +14,7 @@ use experimental 'smartmatch';
 with 'Org::To::Role';
 extends 'Org::To::Base';
 
-our $VERSION = '0.13'; # VERSION
+our $VERSION = '0.14'; # VERSION
 
 require Exporter;
 our @ISA;
@@ -391,7 +391,7 @@ Org::To::HTML - Export Org document to HTML
 
 =head1 VERSION
 
-This document describes version 0.13 of Org::To::HTML (from Perl distribution Org-To-HTML), released on 2014-07-22.
+This document describes version 0.14 of Org::To::HTML (from Perl distribution Org-To-HTML), released on 2014-08-16.
 
 =head1 SYNOPSIS
 

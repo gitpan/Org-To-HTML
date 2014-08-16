@@ -2,8 +2,8 @@ NAME
     Org::To::HTML - Export Org document to HTML
 
 VERSION
-    This document describes version 0.13 of Org::To::HTML (from Perl
-    distribution Org-To-HTML), released on 2014-07-22.
+    This document describes version 0.14 of Org::To::HTML (from Perl
+    distribution Org-To-HTML), released on 2014-08-16.
 
 SYNOPSIS
      use Org::To::HTML qw(org_to_html);

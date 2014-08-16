@@ -1,16 +1,22 @@
 #!perl
 
-use 5.010;
+# Note: This script is a CLI interface to Riap function /Org/To/HTML/org_to_html
+# and generated automatically using Dist::Zilla::Plugin::Rinci::ScriptFromFunc version 0.01
+
+our $DATE = '2014-08-16'; # DATE
+our $VERSION = '0.14'; # VERSION
+
+use 5.010001;
 use strict;
 use warnings;
 
-our $VERSION = '0.13'; # VERSION
-
 use Perinci::CmdLine::Any;
-Perinci::CmdLine::Any->new(url=>'/Org/To/HTML/org_to_html')->run;
 
-1;
-# ABSTRACT: Convert Org to HTML document
+Perinci::CmdLine::Any->new(
+    url => "/Org/To/HTML/org_to_html",
+)->run;
+
+# ABSTRACT: Export Org document to HTML
 # PODNAME: org-to-html
 
 __END__
@@ -21,11 +27,34 @@ __END__
 
 =head1 NAME
 
-org-to-html - Convert Org to HTML document
+org-to-html - Export Org document to HTML
 
 =head1 VERSION
 
-This document describes version 0.13 of org-to-html (from Perl distribution Org-To-HTML), released on 2014-07-22.
+This document describes version 0.14 of org-to-html (from Perl distribution Org-To-HTML), released on 2014-08-16.
+
+=head1 SYNOPSIS
+
+Usage:
+
+ % org-to-html
+
+Examples:
+
+ TODO
+
+To see all options:
+
+ % org-to-html --help
+
+=head1 DESCRIPTION
+
+This is the non-OO interface. For more customization, consider subclassing
+Org::To::HTML.
+
+=head1 OPTIONS
+
+ TODO
 
 =head1 HOMEPAGE
 
